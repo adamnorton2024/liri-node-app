@@ -23,6 +23,9 @@ switch (command) {
         spotifyThis(name);
         break;
     case "movie-this":
+        if(!name){
+            name = "Mr. Nobody";
+        }
         movie(name);
         break;
     case "do-what-it-says":
