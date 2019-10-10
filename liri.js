@@ -17,6 +17,9 @@ switch (command) {
         concert(name);
         break;
     case "spotify-this-song":
+        if(!name){
+            name = "Ace of Base The Sign US Album [Remastered]";
+        }
         spotifyThis(name);
         break;
     case "movie-this":
@@ -64,6 +67,42 @@ function concert(artist){
 
 function spotifyThis(song){
     console.log("Get Spotify Data");
+    console.log("Song is: " + song);
+
+        spotify
+            .search({ type: 'track', query: song })
+            .then(function (response) {
+
+
+                var songData = response.tracks.items;
+                if (song === "Ace of Base The Sign US Album [Remastered]"){
+                    console.log("Should only be one song");
+                    console.log("===========================================")
+                    console.log(" ");
+                    console.log("Artist(s): " + songData[0].artists[0].name);
+                    console.log("Song Name: " + songData[0].name);
+                    console.log("Album Name: " + songData[0].album.name);
+                    console.log("Preview Link: " + songData[0].preview_url);
+                    console.log(" ");
+                } else {
+
+                    for (let i = 0; i < songData.length; i++) {
+                        console.log("===========================================")
+                        console.log(" ");
+                        console.log("Artist(s): " + songData[i].artists[0].name);
+                        console.log("Song Name: " + songData[i].name);
+                        console.log("Album Name: " + songData[i].album.name);
+                        console.log("Preview Link: " + songData[i].preview_url);
+                        console.log(" ");
+                    }
+                };
+
+                
+            })
+            .catch(function (err) {
+                console.log(err);
+            });
+
 };
 
 function movie(title){
