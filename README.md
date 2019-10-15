@@ -3,6 +3,12 @@
 # Purpose 
 This app is meant to help you quickly and easily find information about concerts, movies, specifics songs and your favorite artists.  This help helps you find content and events to satisfy all of your entertainment needs. 
 
+# To Use
+In order to use these app, you will need your own Spotify API keys.  Create a .env file, and enter the following code into it:
+
+SPOTIFY_ID="Your Spotify ID"
+SPOTIFY_SECRET="Your Spotify Secret Code"
+
 # Commands 
 This app only has 4 commands, which makes it very easy to use.  From your command line, type any of the following:
 
