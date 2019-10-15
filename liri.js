@@ -1,4 +1,5 @@
 require("dotenv").config();
+var fs = require("fs");
 var axios = require("axios");
 var moment = require('moment');
 Spotify = require("node-spotify-api");
@@ -41,7 +42,7 @@ switch (command) {
 }
 
 function concert(artist){
-    console.log("Get Concert Data");
+    //console.log("Get Concert Data");
     var queryUrl = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp";
 
     axios.get(queryUrl).then(
@@ -49,7 +50,7 @@ function concert(artist){
 
             //console.clear();
             // artist = artist.replace(/+/g, ' ');
-            console.log(response.data);
+           // console.log(response.data);
             for (let i = 0; i < response.data.length; i++) {
                 console.log("=================================");
                 console.log(" ");
@@ -153,4 +154,16 @@ function movie(title){
 
 function random(){
     console.log("Do Random Stuff");
+    fs.readFile("random.txt", "utf8", function(error, data) {
+
+        if(error){
+            return console.log(error);
+        };
+
+        console.log(data);
+
+        var dataArr = data.split(",");
+
+        console.log(dataArr);
+    });
 };
